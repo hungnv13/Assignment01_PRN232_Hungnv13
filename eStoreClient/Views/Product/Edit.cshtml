@@ -4,42 +4,58 @@
     ViewData["Title"] = "Edit Product";
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4 text-dark">Edit Product</h2>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-warning fw-bold">
+            <i class="bi bi-pencil-square"></i> Edit Product
+        </h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+        </a>
+    </div>
 
-    <form asp-action="Edit" method="post" class="border p-4 rounded shadow-sm bg-white">
+    <form asp-action="Edit" method="post" class="border p-4 rounded-3 shadow-sm bg-white">
         <input type="hidden" asp-for="ProductId" />
 
-        <div class="form-group mb-3">
-            <label asp-for="ProductName" class="form-label fw-bold text-dark">Product Name</label>
-            <input asp-for="ProductName" class="form-control border-dark text-dark bg-light" />
+        <div class="mb-3">
+            <label asp-for="ProductName" class="form-label fw-semibold text-dark">Product Name</label>
+            <input asp-for="ProductName" class="form-control bg-light border-dark" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
         </div>
 
-        <div class="form-group mb-3">
-            <label asp-for="Weight" class="form-label fw-bold text-dark">Weight</label>
-            <input asp-for="Weight" class="form-control border-dark text-dark bg-light" />
+        <div class="mb-3">
+            <label asp-for="Weight" class="form-label fw-semibold text-dark">Weight</label>
+            <input asp-for="Weight" class="form-control bg-light border-dark" />
+            <span asp-validation-for="Weight" class="text-danger"></span>
         </div>
 
-        <div class="form-group mb-3">
-            <label asp-for="UnitPrice" class="form-label fw-bold text-dark">Unit Price</label>
-            <input asp-for="UnitPrice" class="form-control border-dark text-dark bg-light" />
+        <div class="mb-3">
+            <label asp-for="UnitPrice" class="form-label fw-semibold text-dark">Unit Price</label>
+            <input asp-for="UnitPrice" class="form-control bg-light border-dark" />
+            <span asp-validation-for="UnitPrice" class="text-danger"></span>
         </div>
 
-        <div class="form-group mb-3">
-            <label asp-for="UnitsInStock" class="form-label fw-bold text-dark">Units In Stock</label>
-            <input asp-for="UnitsInStock" class="form-control border-dark text-dark bg-light" />
+        <div class="mb-3">
+            <label asp-for="UnitsInStock" class="form-label fw-semibold text-dark">Units In Stock</label>
+            <input asp-for="UnitsInStock" class="form-control bg-light border-dark" />
+            <span asp-validation-for="UnitsInStock" class="text-danger"></span>
         </div>
 
-        <div class="form-group mb-4">
-            <label asp-for="CategoryId" class="form-label fw-bold text-dark">Category</label>
-            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select border-dark text-dark bg-light">
+        <div class="mb-4">
+            <label asp-for="CategoryId" class="form-label fw-semibold text-dark">Category</label>
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select bg-light border-dark">
                 <option value="">-- Select Category --</option>
             </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
 
-        <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-dark">Save</button>
-            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-warning text-white shadow-sm">
+                <i class="bi bi-save"></i> Save Changes
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-x-circle"></i> Cancel
+            </a>
         </div>
     </form>
 </div>
