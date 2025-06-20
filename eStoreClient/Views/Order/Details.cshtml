@@ -1,0 +1,34 @@
+﻿@model BusinessObject.Models.Order
+
+<h2>Order #@Model.OrderId Details</h2>
+
+<p><strong>Member ID:</strong> @Model.MemberId</p>
+<p><strong>Order Date:</strong> @Model.OrderDate</p>
+<p><strong>Required Date:</strong> @Model.RequiredDate</p>
+<p><strong>Shipped Date:</strong> @Model.ShippedDate</p>
+<p><strong>Freight:</strong> @Model.Freight</p>
+
+<h3>Order Items</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.Discount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-secondary" asp-action="Index">Back to List</a>

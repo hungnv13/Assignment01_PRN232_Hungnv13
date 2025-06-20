@@ -67,5 +67,11 @@ namespace DataAccess.DAO
                 context.SaveChanges();
             }
         }
+
+        public Member Login(string email, string password)
+        {
+            using var context = new ClothesOrderDbContext();
+            return context.Members.FirstOrDefault(m => m.Email == email && m.Password == password);
+        }
     }
 }

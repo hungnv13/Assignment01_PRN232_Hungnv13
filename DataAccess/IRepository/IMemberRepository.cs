@@ -14,5 +14,6 @@ namespace DataAccess.IRepository
         void InsertMember(Member p);
         void UpdateMember(Member p);
         void DeleteMember(int id);
+        Member Login(string email, string password);
     }
 }

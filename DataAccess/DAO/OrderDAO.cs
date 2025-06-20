@@ -1,9 +1,8 @@
 ﻿using BusinessObject.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.DAO
 {
@@ -30,13 +29,19 @@ namespace DataAccess.DAO
         public List<Order> GetOrderList()
         {
             using var context = new ClothesOrderDbContext();
-            return context.Orders.ToList();
+            return context.Orders
+                          .Include(o => o.OrderDetails)
+                          .ThenInclude(od => od.Product)
+                          .ToList();
         }
 
         public Order GetOrderById(int id)
         {
             using var context = new ClothesOrderDbContext();
-            return context.Orders.FirstOrDefault(m => m.OrderId == id);
+            return context.Orders
+                          .Include(o => o.OrderDetails)
+                          .ThenInclude(od => od.Product)
+                          .FirstOrDefault(o => o.OrderId == id);
         }
 
         public void AddOrder(Order o)

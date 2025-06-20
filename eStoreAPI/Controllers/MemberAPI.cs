@@ -11,6 +11,13 @@ namespace eStoreAPI.Controllers
     {
         private readonly IMemberRepository memberRepository = new MemberRepository();
 
+        [HttpPost("login")]
+        public IActionResult Login(string email, string password)
+        {
+            var member = memberRepository.Login(email, password);
+            return member == null ? NotFound() : Ok(member);
+        }
+
         [HttpGet]
         public IActionResult GetAllMember() => Ok(memberRepository.GetMembers());
 
